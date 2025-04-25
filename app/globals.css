@@ -3,6 +3,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --zoom-in-out: zoom-in-out 3s ease-in-out infinite;
 }
 
 @theme inline {
@@ -12,10 +13,21 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+  }
+} */
+
+@keyframes zoom-in-out {
+  50% {
+    transform: scale(0.97);
+    opacity: 0.97;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
 }
 
