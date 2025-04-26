@@ -57,7 +57,7 @@ export default function Home() {
       </div>
       {delayedShowPage && 
       <div className={`h-lvh flex flex-col items-center transition-opacity duration-500 ${fadeIn ? "opacity-100" : "opacity-0"}`}>
-        <div className={`relative w-full sticky top-0 flex justify-center z-50 ${showItems ? "bg-(--hover-bg-navbar) h-200" : "backdrop-blur-lg bg-white/50 delay-500"}`} onMouseLeave={handleMouseLeave}>
+        <div className={`relative w-full sticky top-0 flex justify-center z-50 ${showItems ? "bg-(--hover-bg-navbar) h-200" : "backdrop-blur-lg bg-white/50 delay-300"}`} onMouseLeave={handleMouseLeave}>
           <div className="container">
             <NavBar onMouseEnter={handleMouseEnter} showItems={showItems}/>
           </div>

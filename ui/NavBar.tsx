@@ -1,55 +1,24 @@
 "use client";
 
 import React from "react";
-// import Image from "next/image";
 import NavButton from "./NavButton";
 
 const itemsLists = [ 
-    {
-      name: "Store",
-      items: ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8", "Item 9", "Item 11", "Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8", "Item 9", "Item 11",],
-    },
-    {
-      name: "Mac",
-      items: ["Item 1", "Item 2", "Item 4"],
-    },
-    {
-      name: "IPad",
-      items: ["Item 1", "Item 2", "Item 3"],
-    },
-    {
-      name: "IPhone",
-      items: ["Item 1", "Item 2", "Item 3"],
-    },
-    {
-      name: "Watch",
-      items: ["Item 1", "Item 2", "Item 3"],
-    },
-    {
-      name: "Vision",
-      items: ["Item 1", "Item 2", "Item 3"],
-    },
-    {
-      name: "AirPods",
-      items: ["Item 1", "Item 2", "Item 3"],
-    },
-    {
-      name: "TV & Home",
-      items: ["Item 1", "Item 2", "Item 3"],
-    },
-    {
-      name: "Entertainment",
-      items: ["Item 1", "Item 2", "Item 3"],
-    },
-    {
-      name: "Accessories",
-      items: ["Item 1", "Item 2", "Item 3"],
-    },
-    {
-      name: "Support",
-      items: ["Item 1", "Item 2", "Item 3"],
-    }
-]
+  {
+    name: "Store",
+    items: ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7","Item 8", "Item 9", "Item 11", "Item 1", "Item 2", "Item 3"],
+  },
+  { name: "Mac", items: ["Item 1", "Item 2", "Item 3", "Item 1", "Item 2", "Item 3"] },
+  { name: "IPad", items: ["Item 1", "Item 2", "Item 3", "Item 1", "Item 2",] },
+  { name: "IPhone", items: ["Item 1", "Item 2", "Item 3"] },
+  { name: "Watch", items: ["Item 1", "Item 2", "Item 3"] },
+  { name: "Vision", items: ["Item 1", "Item 2", "Item 3"] },
+  { name: "AirPods", items: ["Item 1", "Item 2", "Item 3"] },
+  { name: "TV & Home", items: ["Item 1", "Item 2", "Item 3"] },
+  { name: "Entertainment", items: ["Item 1", "Item 2", "Item 3"] },
+  { name: "Accessories", items: ["Item 1", "Item 2", "Item 3"] },
+  { name: "Support", items: ["Item 1", "Item 2", "Item 3"] }
+];
 
 interface NavBarProps {
   showItems: boolean;
@@ -58,12 +27,34 @@ interface NavBarProps {
 
 function NavBar({ onMouseEnter, showItems }: NavBarProps) {
   const [activeButton, setActiveButton] = React.useState<string | null>(null);
+  const contentRef = React.useRef<HTMLUListElement>(null);
+  const [height, setHeight] = React.useState("0px");
+  const [animateItems, setAnimateItems] = React.useState(false);
+  const prevShowRef = React.useRef(showItems);
 
   const handleMouseEnter = (name: string) => {
-    
     setActiveButton(name);
     onMouseEnter();
-  }
+  };
+
+  React.useEffect(() => {
+    if (!contentRef.current) return;
+    const contentEl = contentRef.current;
+
+    const newHeight = showItems ? `${contentEl.scrollHeight}px` : "0px";
+    setHeight(newHeight);
+  }, [showItems, activeButton]);
+
+  React.useEffect(() => {
+    // animate only when we go from closed to open
+    if (!prevShowRef.current && showItems) {
+      setAnimateItems(true);
+    } else {
+      setAnimateItems(false);
+    }
+    prevShowRef.current = showItems;
+  }, [showItems, activeButton]);
+
   return (
     <>
       <div className="w-full h-full flex justify-between items-center px-3 text-xs font-normal">
@@ -87,11 +78,12 @@ function NavBar({ onMouseEnter, showItems }: NavBarProps) {
           </svg>
         </div>
       </div>
-      <div className="">
-        <div key={activeButton} className={`absolute left-0 w-full bg-(--hover-bg-navbar) overflow-hidden ${showItems ? "max-h-svh animate-(--slide-down)" : "max-h-0 animate-(--slide-up)"}`}>
-          <ul className="list-none flex flex-col">
-            {activeButton && itemsLists.find(item => item.name === activeButton)?.items.map((item, index) => (
-              <li key={index} className="">
+      <div>
+        <div style={{ height, transition: "height 300ms ease-in-out" }} className="absolute left-0 w-full bg-(--hover-bg-navbar) overflow-hidden">
+          <ul  ref={contentRef} className={`flex flex-col list-none`}>
+            {activeButton &&
+            itemsLists.find((grp) => grp.name === activeButton)?.items.map((item, i) => (
+              <li key={i} style={{animation: animateItems ? `fade-in 300ms ease-out ${i * 50}ms both` : ""}} className={"px-4 py-2"}>
                 {item}
               </li>
             ))}
