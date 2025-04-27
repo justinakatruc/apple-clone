@@ -3,21 +3,193 @@
 import React from "react";
 import NavButton from "./NavButton";
 
-const itemsLists = [ 
+const itemsLists = [
   {
     name: "Store",
-    items: ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7","Item 8", "Item 9", "Item 11", "Item 1", "Item 2", "Item 3"],
+    items: [
+      {
+        category: "Shop",
+        subItems: ["Shop the Latest", "Mac", "iPad", "iPhone", "Apple Watch", "Apple Vision Pro", "Accessories"],
+      },
+      {
+        category: "Quick Links",
+        subItems: ["Find a Store", "Order Status", "Apple Trade In", "Financing", "Personal Setup"],
+      },
+      {
+        category: "Shop Special Stores",
+        subItems: ["Certified Refurbished", "Education", "Business", "Veterans and Military", "Government"],
+      },
+    ],
   },
-  { name: "Mac", items: ["Item 1", "Item 2", "Item 3", "Item 1", "Item 2", "Item 3"] },
-  { name: "IPad", items: ["Item 1", "Item 2", "Item 3", "Item 1", "Item 2",] },
-  { name: "IPhone", items: ["Item 1", "Item 2", "Item 3"] },
-  { name: "Watch", items: ["Item 1", "Item 2", "Item 3"] },
-  { name: "Vision", items: ["Item 1", "Item 2", "Item 3"] },
-  { name: "AirPods", items: ["Item 1", "Item 2", "Item 3"] },
-  { name: "TV & Home", items: ["Item 1", "Item 2", "Item 3"] },
-  { name: "Entertainment", items: ["Item 1", "Item 2", "Item 3"] },
-  { name: "Accessories", items: ["Item 1", "Item 2", "Item 3"] },
-  { name: "Support", items: ["Item 1", "Item 2", "Item 3"] }
+  { 
+    name: "Mac", 
+    items: [
+      {
+        category: "Explore Mac",
+        subItems: ["Explore Mac", "MacBook Air", "MacBook Pro", "iMac", "Mac mini", "Mac Studio", "Mac Pro", "Displays"],
+        utils: ["Compare Mac", "Switch from PC to Mac"]
+      },
+      {
+        category: "Shop Mac",
+        subItems: ["Shop Mac", "Help me choose", "Mac Accesories", "Apple Trade In", "Financing"],
+      },
+      {
+        category: "More from Mac",
+        subItems: ["Mac Support", "AppleCare+ for Mac", "macOS Sequoia", "Apple Intelligence", "Apps by Apple", "Continuity", "iCloud+", "Mac for Business", "Education"],
+      },
+    ],
+  },
+  { 
+    name: "iPad", 
+    items: [
+      {
+        category: "Explore iPad",
+        subItems: ["Explore All iPad", "iPad Pro", "iPad Air", "iPad", "iPad mini", "Apple Pencil", "Keyboards"],
+        utils: ["Compare iPad", "Why iPad"]
+      },
+      {
+        category: "Shop iPad",
+        subItems: ["Shop iPad", "iPad Accesories", "Apple Trade In", "Financing"],
+      },
+      {
+        category: "More from iPad",
+        subItems: ["iPad Support", "AppleCare+ for iPad", "iPadOS 18", "Apple Intelligence", "Apps by Apple", "iCloud+", "Education"],
+      },
+    ],
+  },
+  { 
+    name: "iPhone", 
+    items: [
+      {
+        category: "Explore iPhone",
+        subItems: ["Explore All iPhone", "iPhone 16 Pro", "iPhone 16", "iPhone 16e", "iPhone 15"],
+        utils: ["Compare iPhone", "Switch from Android"]
+      },
+      {
+        category: "Shop iPhone",
+        subItems: ["Shop iPhone", "iPhone Accesories", "Apple Trade In", "Carrier Deals at Apple", "Financing"],
+      },
+      {
+        category: "More from iPhone",
+        subItems: ["iPhone Support", "AppleCare+ for iPhone", "iOS 18", "Apple Intelligence", "Apps by Apple", "iPhone Privacy", "iCloud+", "Wallet, Pay, Card", "Siri"],
+      },
+    ],
+  },
+  { 
+    name: "Watch", 
+    items: [
+      {
+        category: "Explore Watch",
+        subItems: ["Explore All Apple Watch", "Apple Watch Series 10", "Apple Watch Ultra 2", "Apple Watch SE", "Apple Watch Nike", "Apple Watch Hermès"],
+        utils: ["Compare Watch", "Why Apple Watch"]
+      },
+      {
+        category: "Shop Watch",
+        subItems: ["Shop Apple Watch", "Apple Watch Studio", "Apple Watch Bands", "Apple Watch Accessories", "Apple Trade In", "Financing"],
+      },
+      {
+        category: "More from Watch",
+        subItems: ["Apple Watch Support", "AppleCare+", "watchOS 11", "Apple Watch For Your Kids", "Apps by Apple", "Apple Fitness+"],
+      },
+    ],
+  },
+  { 
+    name: "Vision", 
+    items: [
+      {
+        category: "Explore Vision",
+        subItems: ["Explore Apple Vision Pro"],
+        utils: ["Guided Tour", "Tech Specs"],
+      },
+      {
+        category: "Shop Vision",
+        subItems: ["Shop Apple Vision Pro", "Apple Vision Pro Accessories", "Book a Demo", "Financing"],
+      },
+      {
+        category: "More from Vision",
+        subItems: ["Apple Vision Pro Support", "AppleCare+", "visionOS 2"],
+      },
+    ],
+  },
+  { 
+    name: "AirPods", 
+    items: [
+      {
+        category: "Explore AirPods",
+        subItems: ["Explore All AirPods", "AirPods 4", "AirPods Pro 2", "AirPods Max"],
+        utils: ["Compare AirPods"],
+      },
+      {
+        category: "Shop AirPods",
+        subItems: ["Shop AirPods", "AirPods Accessories"],
+      },
+      {
+        category: "More from AirPods",
+        subItems: ["AirPods Support", "AppleCare+ for Headphones", "Hearing Health", "Apple Music"],
+      },
+    ],
+  },
+  { 
+    name: "TV & Home", 
+    items: [
+      {
+        category: "Explore TV & Home",
+        subItems: ["Explore TV & Home", "Apple TV 4K", "HomePod", "HomePod Mini"],
+      },
+      {
+        category: "Shop TV & Home",
+        subItems: ["Shop Apple TV 4K", "Shop HomePod", "Shop HomePod Mini", "Shop Siri Remote", "TV & Home Accessories"],
+      },
+      {
+        category: "More from TV & Home",
+        subItems: ["Apple TV Support", "HomePod Support", "AppleCare+", "Apple TV app", "Apple TV+", "Home app", "Apple Music", "Siri", "AirPlay"],
+      },
+    ],
+  },
+  { 
+    name: "Entertainment", 
+    items: [
+      {
+        category: "Explore Entertainment",
+        subItems: ["Explore Entertainment", "Apple One", "Apple TV+", "Apple Music", "Apple Arcade", "Apple Fitness+", "Apple News+", "Apple Podcasts", "Apple Books", "App Store"],
+      },
+      {
+        category: "Support",
+        subItems: ["Apple TV+ Support", "Apple Music Support"],
+      },
+    ],
+  },
+  { 
+    name: "Accessories", 
+    items: [
+      {
+        category: "Shop Accessories",
+        subItems: ["Shop All Accessories", "Mac", "iPad", "iPhone", "Apple Watch", "Apple Vision Pro", "AirPods", "TV & Home"],
+      },
+      {
+        category: "Explore Accessories",
+        subItems: ["Made by Apple", "Beats by Dr. Dre", "AirTag"],
+      },
+    ],
+  },
+  { 
+    name: "Support", 
+    items: [
+      {
+        category: "Explore Support",
+        subItems: ["iPhone", "Mac", "iPad", "Watch", "Apple Vision Pro", "AirPods", "Music", "TV"],
+        utils: ["Explore Support"]
+      },
+      {
+        category: "Get Help",
+        subItems: ["Community", "Check Coverage", "Repair"]
+      },
+      {
+        category: "Helpful Topics",
+        subItems: ["Get AppleCare+", "Apple Account and Password", "Billing & Subscriptions", "Accessibility"],
+      },
+    ],
+  },
 ];
 
 interface NavBarProps {
@@ -43,14 +215,16 @@ function NavBar({ onMouseEnter, showItems }: NavBarProps) {
 
     const newHeight = showItems ? `${contentEl.scrollHeight}px` : "0px";
     setHeight(newHeight);
-  }, [showItems, activeButton]);
 
-  React.useEffect(() => {
     // animate only when we go from closed to open
     if (!prevShowRef.current && showItems) {
       setAnimateItems(true);
     } else {
       setAnimateItems(false);
+    }
+
+    if (!showItems) {
+      setActiveButton(null);
     }
     prevShowRef.current = showItems;
   }, [showItems, activeButton]);
@@ -79,12 +253,24 @@ function NavBar({ onMouseEnter, showItems }: NavBarProps) {
         </div>
       </div>
       <div>
-        <div style={{ height, transition: "height 300ms ease-in-out" }} className="absolute left-0 w-full bg-(--hover-bg-navbar) overflow-hidden">
-          <ul  ref={contentRef} className={`flex flex-col list-none`}>
+        <div style={{ height, transition: "height 300ms ease-in-out" }} className="absolute left-0 w-full bg-(--hover-bg-navbar) overflow-hidden flex justify-center items-center">
+          <ul ref={contentRef} className={`container flex list-none gap-10 pt-8 pb-14 px-3`}>
             {activeButton &&
             itemsLists.find((grp) => grp.name === activeButton)?.items.map((item, i) => (
-              <li key={i} style={{animation: animateItems ? `fade-in 300ms ease-out ${i * 50}ms both` : ""}} className={"px-4 py-2"}>
-                {item}
+              <li key={i} style={{animation: animateItems ? `fade-in 300ms ease-out ${(i+1) * 50}ms both` : undefined}} className={"font-light text-xs flex flex-col gap-3 "}>
+                {item.category}
+                <ul className="flex flex-col gap-2">
+                  {item.subItems.map((subItem, j) => (
+                    <li key={j} className={`cursor-pointer font-medium ${i === 0 && "text-2xl pr-12"}`} style={{animation: animateItems ? `fade-in 300ms ease-out ${(i*2 + j+1) * 50}ms both` : undefined}}>
+                      {subItem}
+                    </li>
+                  ))}
+                  {item.utils && item.utils.map((util, j) => (
+                    <li key={j} className="cursor-pointer">
+                      {util}
+                    </li>
+                  ))}
+                </ul>
               </li>
             ))}
           </ul>

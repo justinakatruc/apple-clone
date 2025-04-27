@@ -91,12 +91,12 @@ body {
   @media (min-width: 768px) {
     .container {
       /* background-color: green; */
-      max-width: 720px; 
+      max-width: 933px; 
     } 
   }
   @media (min-width: 992px) {
     .container {
       /* background-color: red; */
-      max-width: 1000px; 
+      max-width: 1004px; 
     } 
   }
