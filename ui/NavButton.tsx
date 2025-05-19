@@ -11,7 +11,7 @@ function NavButton({ name, onMouseEnter }: NavButtonProps) {
   const handleMouseEnter = () => {
     // start a 150 ms timer – only when it completes do we actually call the parent
     timeoutRef.current = setTimeout(() => {
-      onMouseEnter(name);
+      onMouseEnter(name); // call the parent function - handleMouseEnter(name)
     }, 150);
   };
 
