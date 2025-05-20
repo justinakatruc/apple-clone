@@ -1,7 +1,8 @@
 "use client";
 import React from "react";
-import NavBar from "@/ui/NavBar";
+import NavBar from "@/app/ui/NavBar";
 import Image from "next/image";
+import { useMediaQuery } from "@/app/lib/hooks";
 
 export default function Home() {
   // Welcome page
@@ -10,7 +11,9 @@ export default function Home() {
 
   // Main page
   const [fadeIn, setFadeIn] = React.useState(false);
-  const [expandMenu, setExpandMenu] = React.useState(false);
+  const [showDesktopMenu, setShowDesktopMenu] = React.useState(false);
+  const [showMobileMenu, setShowMobileMenu] = React.useState(false);
+  const isDesktop = useMediaQuery('(min-width: 828px)');
 
   // Show the main page after 500ms
   React.useEffect(() => {
@@ -31,12 +34,34 @@ export default function Home() {
     return () => clearTimeout(timeout);
   }, [showInfo]);
 
+  React.useEffect(() => {
+    if (isDesktop) {
+      setShowMobileMenu(false); // Reset menu on desktop view
+    }
+  }, [isDesktop]);
+
+  const getAnimationClass = () => {
+    if (isDesktop && showDesktopMenu) {
+      return "bg-(--hover-bg-navbar)";
+    }
+    else if (isDesktop && !showDesktopMenu) {
+      return "backdrop-blur-lg bg-white/50 delay-500";
+    }
+    else if (!isDesktop && showMobileMenu) {
+      return "bg-(--hover-bg-navbar)";
+    }
+    else {
+      return "backdrop-blur-lg bg-white/50 delay-255";
+    }
+  }
+
   // Handle mouse enter and leave events for the navbar
   const handleMouseEnter = () => {
-    setExpandMenu(true);
+    setShowDesktopMenu(true);
   }
   const handleMouseLeave = () => {
-    setExpandMenu(false);
+    if (showMobileMenu) return; // don't hide the menu if mobile menu is open
+    setShowDesktopMenu(false);
   }
 
   return (
@@ -61,13 +86,13 @@ export default function Home() {
       </div>
       {delayedShowPage && 
       <div className={`h-lvh flex flex-col items-center transition-opacity duration-500 ${fadeIn ? "opacity-100" : "opacity-0"}`}>
-        <div className={`relative w-full sticky top-0 flex justify-center z-50 ${expandMenu ? "bg-(--hover-bg-navbar) h-200" : "backdrop-blur-lg bg-white/50 delay-500"}`} 
+        <div className={`relative w-full sticky top-0 flex justify-center z-50 ${getAnimationClass()}`}
              onMouseLeave={handleMouseLeave}>
           <div className="container">
-            <NavBar onMouseEnter={handleMouseEnter} expandMenu={expandMenu}/>
+            <NavBar showDesktopMenu={showDesktopMenu} showMobileMenu={showMobileMenu} setShowMobileMenu={setShowMobileMenu} onMouseEnter={handleMouseEnter} />
           </div>
         </div>
-        <div className={`w-full flex flex-col items-center gap-12 duration-200 ${expandMenu && "blur-lg"}`}>
+        <div className={`w-full flex flex-col items-center gap-12 duration-200 ${showDesktopMenu && "blur-lg"}`}>
           <div className="bg-[#f6f5f8] relative w-full container-h-lg cursor-pointer">
             <div className="relative flex justify-center container-w-lg h-full mx-auto overflow-hidden">
               <Image
