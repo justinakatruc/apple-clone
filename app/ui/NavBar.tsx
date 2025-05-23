@@ -14,7 +14,9 @@ interface NavBarProps {
 function NavBar({ showDesktopMenu, showMobileMenu, setShowMobileMenu, onMouseEnter }: NavBarProps) {
   // Desktop Menu
   const [activeButton, setActiveButton] = React.useState<string | null>(null);
-  const [height, setHeight] = React.useState("0px");
+  const [desktopHeight, setDesktopHeight] = React.useState("0px");
+  const [mobileHeight, setMobileHeight] = React.useState("0px");
+
   const [showItems, setShowItems] = React.useState(false);
   const desktopMenuRef = React.useRef<HTMLUListElement>(null);
 
@@ -30,7 +32,7 @@ function NavBar({ showDesktopMenu, showMobileMenu, setShowMobileMenu, onMouseEnt
 
     const newHeight = showDesktopMenu ? `${contentEl.scrollHeight}px` : "0px";
     if (showDesktopMenu) {
-      setHeight(newHeight);
+      setDesktopHeight(newHeight);
       // Wait for 100ms (height changed) before showing the items
       setTimeout(() => {
         setShowItems(true);
@@ -40,7 +42,7 @@ function NavBar({ showDesktopMenu, showMobileMenu, setShowMobileMenu, onMouseEnt
       setShowItems(false);
       // Wait for 200ms (items hidden) before collapsing the menu
       setTimeout(() => {
-        setHeight(newHeight);
+        setDesktopHeight(newHeight);
         setActiveButton(null);
       }, 225);
     }
@@ -55,10 +57,10 @@ function NavBar({ showDesktopMenu, showMobileMenu, setShowMobileMenu, onMouseEnt
 
   React.useEffect(() => {
     if (showMobileMenu) {
-      setHeight("100svh");
+      setMobileHeight("100svh");
     }
     else {
-      setHeight("0px");
+      setMobileHeight("0px");
     }
   }, [showMobileMenu]);
 
@@ -130,7 +132,7 @@ function NavBar({ showDesktopMenu, showMobileMenu, setShowMobileMenu, onMouseEnt
       <div>
 
         {/* Desktop Menu */}
-        <div style={{ height, transition: `height ${showItems ? "150ms" : "300ms"} ease-out`}} 
+        <div style={{ height: desktopHeight, transition: `height ${showItems ? "150ms" : "300ms"} ease-out`}} 
              className="desktop-view absolute left-0 w-full bg-(--hover-bg-navbar) overflow-hidden flex justify-center items-start">
           <ul ref={desktopMenuRef} className={`container flex list-none gap-10 pt-10 pb-19 px-3`}>
 
@@ -171,7 +173,7 @@ function NavBar({ showDesktopMenu, showMobileMenu, setShowMobileMenu, onMouseEnt
         </div>
 
         {/* Mobile Menu */}
-        <div style={{ height, transition: `height 300ms ease-out` }} 
+        <div style={{ height: mobileHeight, transition: `height 300ms ease-out` }} 
              className={`mobile-view absolute left-0 w-full bg-(--hover-bg-navbar) overflow-hidden flex justify-start items-start`}>
           <ul ref={mobileMenuRef}
               className={`w-full z-20 flex flex-col items-start gap-2 px-[48px]`}>
