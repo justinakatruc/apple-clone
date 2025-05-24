@@ -5,6 +5,7 @@
   --foreground: #171717;
   --hover-bg-navbar: #fafafc;
   --zoom-in-out: zoom-in-out 3s ease-in-out infinite;
+  --hero-size: 100%;
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -132,47 +133,91 @@ body {
 }
 
 .container-w-md {
-  width: 580px;
+  width: 100svw;
 }
+  @media (min-width: 700px) {
+    .container-w-md {
+      /* background-color: yellow; */
+      width: 364px; 
+    } 
+  }
+  @media (min-width: 900px) {
+    .container-w-md {
+      /* background-color: yellow; */
+      width: 460px; 
+    } 
+  }
+  @media (min-width: 1000px) {
+    .container-w-md {
+      /* background-color: yellow; */
+      width: 528px; 
+    } 
+  }
+  @media (min-width: 1200px) {
+    .container-w-md {
+      /* background-color: grey; */
+      width: 616px; 
+    } 
+  }
+  @media (min-width: 1500px) {
+    .container-w-md {
+      /* background-color: blue; */
+      width: 742px; 
+    } 
+  }
+  @media (min-width: 1600px) {
+    .container-w-md {
+      /* background-color: green; */
+      width: 850px; 
+    } 
+  }
+  @media (min-width: 1920px) {
+    .container-w-md {
+      /* background-color: red; */
+      width: calc(49svw - 6px); 
+    } 
+  }
 
 .container-w-lg {
-  max-width: 1260px;
+  width: 1260px;
 }
   @media (min-width: 360px) {
     .container-w-lg {
       /* background-color: yellow; */
-      max-width: 360px; 
+      width: 360px; 
     } 
   }
   @media (min-width: 420px) {
     .container-w-lg {
       /* background-color: grey; */
-      max-width: 400px; 
+      width: 400px; 
     } 
   }
   @media (min-width: 576px) {
     .container-w-lg {
       /* background-color: blue; */
-      max-width: 540px; 
+      width: 540px; 
     } 
   }
   @media (min-width: 768px) {
     .container-w-lg {
       /* background-color: green; */
-      max-width: 933px; 
+      width: 933px; 
     } 
   }
   @media (min-width: 992px) {
     .container-w-lg {
       /* background-color: red; */
-      max-width: 1260px; 
+      width: 1260px; 
     } 
   }
+
 
 
 .hero-image {
   object-fit: cover;
   object-position: 0 28%;
+  
 }
   @media (min-height: 760px) {
     .hero-image {
