@@ -226,4 +226,24 @@ export const itemsLists : itemsLists[] = [
       },
     ],
   },
+  {
+    name: "Search",
+    items: [
+      {
+        category: "Quick Links",
+        subItems: ["Find a Store", "Apple Vision Pro", "AirPods", "Apple Intelligence", "Apple Trade In Event"],
+        subItemsLinks: ["retail", "apple-vision-pro", "airpods", "apple-intelligence", "shop/goto/trade_in"],
+      },
+    ],
+  },
+  {
+    name: "Cart",
+    items: [
+      {
+        category: "My Profile",
+        subItems: ["Orders", "Your Saves", "Account", "Sign in"],
+        subItemsLinks: ["shop/order/list", "shop/yoursaves", "/shop/account/home", "shop/signIn"],
+      }
+    ]
+  }
 ];
