@@ -75,7 +75,7 @@ function NavBar({ expandMenu, onMouseEnter, setExpandMenu, isDesktop }: NavBarPr
   React.useEffect(() => {
     if (showMobileItems || showSearchMenu || showCartMenu) {
       onMouseEnter();
-      setMobileHeight("100svh");
+      setMobileHeight("100lvh");
     }
     else {
       setExpandMenu(false);

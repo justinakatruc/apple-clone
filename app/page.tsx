@@ -5,6 +5,7 @@ import { useMediaQuery } from "@/app/lib/hooks";
 import IphoneHero from "@/app/ui/cards/IphoneHero";
 import MacBookAirHero from "./ui/cards/MacBookAirHero";
 import MediumCard from "./ui/cards/MediumCard";
+import Footer from "./ui/footer/Footer";
 
 export default function Home() {
   // Welcome page
@@ -100,8 +101,10 @@ export default function Home() {
             </div>
           </div>
           {/* Footer */}
-          <div className="container">
-            This is the footer
+          <div className="w-full bg-(--softBackground) flex items-center justify-center mt-10">
+            <div className="container">
+              <Footer />
+            </div>
           </div>
         </div>
       </div>
