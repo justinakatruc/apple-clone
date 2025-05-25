@@ -71,16 +71,16 @@ export function useUsername(): [string, () => Promise<void>] {
   return [username, fetchUsername];
 }
 
-export function useExpandMenu(): [boolean, () => void, () => void] {
-  const [expand, setExpand] = useState(false);
+// export function useExpandMenu(): [boolean, () => void, () => void] {
+//   const [expand, setExpand] = useState(false);
 
-  const toggleExpand = () => {
-    setExpand((prev) => !prev);
-  };
+//   const toggleExpand = () => {
+//     setExpand((prev) => !prev);
+//   };
 
-  const resetExpand = () => {
-    setExpand(false);
-  };
+//   const resetExpand = () => {
+//     setExpand(false);
+//   };
 
-  return [expand, toggleExpand, resetExpand];
-}
+//   return [expand, toggleExpand, resetExpand];
+// }
