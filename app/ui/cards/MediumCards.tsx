@@ -12,7 +12,7 @@ function MediumCards(prop: MediumCardsProps) {
   });
 
   const [products] = useFetchList("/api/products/layout", query, { cache: "no-store" });
-  console.log("Products fetched:", products);
+  // console.log("Products fetched:", products);
 
   return (
     <div className="flex gap-3 flex-wrap justify-center w-full">

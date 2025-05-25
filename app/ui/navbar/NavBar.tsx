@@ -215,7 +215,7 @@ function NavBar({ expandMenu, onMouseEnter, setExpandMenu, isDesktop }: NavBarPr
                     <li key={subItem} 
                         style={{opacity: showDesktopItems ? 1 : 0, transform: `translateY(${showDesktopItems ? '3px' : '0px'})`, transition: `opacity 200ms ease-in-out ${(i * 2 + j + 1) * 20}ms, transform 300ms ease-out`}} 
                         className={`cursor-pointer font-medium ${i === 0 && "text-2xl pr-12"}`}>
-                      <a href={item.subItemsLinks && item.subItemsLinks[j]}>{subItem}</a>
+                      <Link href={`/${item.subItemsLinks && item.subItemsLinks[j]}`}>{subItem}</Link>
                     </li>
                   ))}
                   
@@ -225,9 +225,9 @@ function NavBar({ expandMenu, onMouseEnter, setExpandMenu, isDesktop }: NavBarPr
                         style={{opacity: showDesktopItems ? 1 : 0, transform: `translateY(${showDesktopItems ? '3px' : '0px'})`, transition: `opacity 200ms ease-in-out ${((i+1)*item.subItems.length + j+1) * 20}ms, transform 300ms ease-out`}} 
                         className="cursor-pointer font-medium"
                         >
-                      <a href={item.subItemsLinks && item.subItemsLinks[item.subItems.length + j]}>
+                      <Link href={`/${item.subItemsLinks && item.subItemsLinks[item.subItems.length + j]}`}>
                         {util}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>

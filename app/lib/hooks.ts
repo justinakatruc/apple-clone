@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { getUsername } from './actions';
 
 export function useMediaQuery(query: string): boolean {
   const [matches, setMatches] = useState(false);
@@ -53,4 +54,19 @@ export function useQuery(initialQuery: Object): [Object, (newQuery: Object) => v
     setQuery(initialQuery);
   };
   return [query, updateQuery, resetQuery];
+}
+
+export function useUsername(): [string, () => Promise<void>] {
+  const [username, setUsername] = useState("");
+
+  const fetchUsername = async () => {
+    const name = await getUsername();
+    setUsername(name);
+  };
+
+  useEffect(() => {
+    fetchUsername();
+  }, []);
+
+  return [username, fetchUsername];
 }
