@@ -23,7 +23,7 @@ function SignInForm() {
         <div className="relative w-full">
           <div>
             <input
-              placeholder="Email or Phone Number"
+              placeholder="admin"
               className="w-full py-3 pl-4 pr-50 rounded-xl border border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"
               name="emailOrPhone"
               type="text"
@@ -37,17 +37,25 @@ function SignInForm() {
           </div>
           <div /*className={`${passwordBox ? "block" : "hidden"}`}*/>
             <input
-              placeholder="Password"
+              placeholder="123"
               className={"w-full py-3 pl-4 pr-50 rounded-xl border border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"}
               name="password"
               type="password"
             />
+            {!loading && 
             <button
               onClick={() => setPasswordBox(!passwordBox)}
               className="absolute cursor-pointer right-3 top-3/4 -translate-y-1/2 w-7 h-7 flex items-center justify-center rounded-full border border-gray-400 text-gray-600 hover:bg-gray-100"
             >
               ➔
-            </button>
+            </button>}
+            {loading && 
+            <div className="absolute right-3 top-3/4 -translate-y-1/2 w-7 h-7 flex items-center justify-center rounded-full border border-gray-400 text-gray-600">
+              <svg className="animate-spin h-5 w-5 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2.93 6.93A8.003 8.003 0 014 12H0c0 5.523 4.477 10 10 10v-4a6.002 6.002 0 01-3.07-1.07z"></path>
+              </svg>
+            </div>}
           </div>
         </div>
       </div>
