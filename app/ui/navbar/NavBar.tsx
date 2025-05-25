@@ -183,8 +183,25 @@ function NavBar({ expandMenu, onMouseEnter, setExpandMenu, isDesktop }: NavBarPr
              className="desktop-view absolute left-0 w-full bg-(--hover-bg-navbar) overflow-hidden flex justify-center items-start">
           <ul ref={desktopMenuRef} className={`container flex list-none gap-10 pt-10 pb-19 px-3`}>
 
+            {/* Search Menu */}
+            {activeButton === "Search" && (
+              <li className="w-full flex justify-start items-center"
+                  style={{opacity: showDesktopItems ? 1 : 0, transform: `translateY(${showDesktopItems ? '3px' : '0px'})`, transition: `opacity 200ms ease-in-out, transform 300ms ease-out`}}>
+                <SearchMenu showSearchMenu={showSearchMenu} searchList={itemsLists.find((list) => list.name === 'Search')!} />
+              </li>
+            )}
+            {/* Cart Menu */}
+            {activeButton === "Cart" && (
+              <li className="w-full flex justify-start items-center"
+                  style={{opacity: showDesktopItems ? 1 : 0, transform: `translateY(${showDesktopItems ? '3px' : '0px'})`, transition: `opacity 200ms ease-in-out, transform 300ms ease-out`}}>
+                <CartMenu showCartMenu={showCartMenu} cartList={itemsLists.find((list) => list.name === 'Cart')!} />
+              </li>
+            )}
+
             {/* Items List */}
-            {itemsLists.find((grp) => grp.name === activeButton)?.items.map((item, i) => (
+            {activeButton !== "Search" 
+            && activeButton !== "Cart" 
+            && itemsLists.find((grp) => grp.name === activeButton)?.items.map((item, i) => (
               <li key={item.category} 
                   style={{opacity: showDesktopItems ? 1 : 0, transform: `translateY(${showDesktopItems ? '3px' : '0px'})`, transition: `opacity 200ms ease-in-out ${(i+1) * 20}ms, transform 300ms ease-out`}} 
                   className={"font-light text-xs flex flex-col gap-3 "}>
@@ -216,8 +233,6 @@ function NavBar({ expandMenu, onMouseEnter, setExpandMenu, isDesktop }: NavBarPr
                 </ul>
               </li>
             ))}
-            {/* <SearchMenu showSearchMenu={showSearchMenu} />
-            <CartMenu showCartMenu={showCartMenu} /> */}
           </ul>
         </div>
 
@@ -244,10 +259,10 @@ function NavBar({ expandMenu, onMouseEnter, setExpandMenu, isDesktop }: NavBarPr
 
           {/* Search Items */}
           <div className={`absolute left-10 z-${showSearchMenu ? 20 : 0}`}>
-            <SearchMenu showSearchMenu={showSearchMenu} />
+            <SearchMenu showSearchMenu={showSearchMenu} searchList={itemsLists.find((list) => list.name === 'Search')!} />
           </div>
           <div className={`absolute left-10 z-${showCartMenu ? 20 : 0}`}>
-            <CartMenu showCartMenu={showCartMenu} />
+            <CartMenu showCartMenu={showCartMenu} cartList={itemsLists.find((list) => list.name === 'Cart')!} />
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-interface itemsLists {
+export interface itemsList {
   name: string;
   items: {
     category: string;
@@ -8,7 +8,7 @@ interface itemsLists {
   }[];
 }
 
-export const itemsLists : itemsLists[] = [
+export const itemsLists : itemsList[] = [
   {
     name: "Store",
     items: [
