@@ -1,6 +1,9 @@
+// client
+
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { getUsername } from './actions';
+import { getUser, getUsername } from './actions';
+import { UserProps } from './models';
 
 export function useMediaQuery(query: string): boolean {
   const [matches, setMatches] = useState(false);
@@ -71,16 +74,17 @@ export function useUsername(): [string, () => Promise<void>] {
   return [username, fetchUsername];
 }
 
-// export function useExpandMenu(): [boolean, () => void, () => void] {
-//   const [expand, setExpand] = useState(false);
+export function useUser(): [UserProps, () => Promise<void>] {
+  const [user, setUser] = useState<UserProps>({} as UserProps);
 
-//   const toggleExpand = () => {
-//     setExpand((prev) => !prev);
-//   };
+  const reUseUser = async () => {
+    const userData = await getUser();
+    setUser(userData);
+  };
 
-//   const resetExpand = () => {
-//     setExpand(false);
-//   };
+  useEffect(() => {
+    reUseUser();
+  }, []);
 
-//   return [expand, toggleExpand, resetExpand];
-// }
+  return [user, reUseUser];
+}

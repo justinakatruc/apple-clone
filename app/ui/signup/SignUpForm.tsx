@@ -21,13 +21,13 @@ function SignUpForm() {
         <div className="flex flex-col gap-3">
           <div className="flex gap-2">
             <input name="firstName" className="border border-gray-500 rounded-xl p-3" type="text" placeholder="First Name" required/>
-            <input className="border border-gray-500 rounded-xl p-3" type="text" placeholder="Last Name" />
+            <input name="lastName" className="border border-gray-500 rounded-xl p-3" type="text" placeholder="Last Name" />
           </div>
           <select name="country" id="country" className="border border-gray-500 rounded-xl p-3">
-            <option value="vn">Vietnam</option>
-            <option value="us">United States</option>
-            <option value="ca">Canada</option>
-            <option value="uk">United Kingdom</option>
+            <option value="Viet Nam">Vietnam</option>
+            <option value="United States">United States</option>
+            <option value="Canada">Canada</option>
+            <option value="United Kingdom">United Kingdom</option>
           </select>
         </div>
         <div className="flex flex-col">

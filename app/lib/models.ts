@@ -1,6 +1,17 @@
 import mongoose from "mongoose";
 
-const userSchema = new mongoose.Schema(
+export interface UserProps {
+  email: string;
+  password: string;
+  firstName: string;
+  lastName?: string;
+  country?: string;
+  birthday?: Date;
+  phone?: string;
+  address?: string;
+}
+
+const userSchema = new mongoose.Schema<UserProps>(
   {
     email: {
       type: String,
@@ -25,6 +36,14 @@ const userSchema = new mongoose.Schema(
     },
     birthday: {
       type: Date,
+      // required: true,
+    },
+    phone: {
+      type: String,
+      // required: true,
+    },
+    address: {
+      type: String,
       // required: true,
     },
   },
