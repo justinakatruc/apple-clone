@@ -50,6 +50,10 @@ export const signUp = async (prevState: any, formData: FormData) => {
   if (password !== confirmPassword) {
     return "Passwords do not match";
   }
+  const emailExists = await User.findOne({ email: email.toString() });
+  if (emailExists) {
+    return "This email is already registered";
+  }
   try {
     connectToDatabase();
 
@@ -62,7 +66,7 @@ export const signUp = async (prevState: any, formData: FormData) => {
   catch (error) {
     throw new Error("Failed to add user");
   }
-
-  revalidatePath('/');
-  redirect('/');
-};
+  
+  revalidatePath('/shop/signIn');
+  redirect('/shop/signIn');
+}
