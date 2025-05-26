@@ -14,7 +14,8 @@ export default function NavBarWrapper() {
 
   const getAnimationClass = () => {
     if (expandMenu) return "bg-(--hover-bg-navbar)";
-    return "backdrop-blur-lg bg-white/50 delay-500";
+    if (isDesktop) return "backdrop-blur-lg bg-white/50 delay-500";
+    return "backdrop-blur-lg bg-white/50 delay-225";
   };
 
   return (

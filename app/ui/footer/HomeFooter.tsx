@@ -1,6 +1,9 @@
-function Footer() {
+import Divider from "../Divider";
+import CopyRight from "./CopyRight";
+
+function HomeFooter() {
   return (
-    <div>
+    <>
       <div className="flex flex-col gap-3 py-4 text-xs text-gray-500">
         <p>
           1. Get extra trade-in credit when you trade in an eligible iPhone and purchase a new eligible Apple device through June 18, 2025. Additional terms from Apple or Apple’s trade-in partners may apply.
@@ -36,15 +39,10 @@ function Footer() {
           Features are subject to change. Some features, applications, and services may not be available in all regions or all languages.
         </p>
       </div>
-      <div className="w-full h-[1px] bg-gray-300"></div>
-      <div className="flex justify-between items-center py-2 text-sm text-gray-900">
-        <p className="text-xs text-gray-500 text-center py-2">
-          © 2025 Truc Minh Nguyen. All rights reserved.
-        </p>
-        <span>Viet Nam</span>
-      </div>
-    </div>
+      <Divider />
+      <CopyRight />
+    </>
   );
 }
 
-export default Footer;
+export default HomeFooter;

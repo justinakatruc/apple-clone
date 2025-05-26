@@ -3,19 +3,19 @@
 import React from "react";
 import Link from "next/link";
 import type { itemsList } from "@/app/data/itemsLists";
-import { logout } from "@/app/lib/actions";
-import { redirect } from "next/navigation";
 import { useUsername } from "@/app/lib/hooks";
+import { useNavBar } from "@/app/context/NavBarContext";
+import SignOutButton from "@/app/ui/signout/SignOutButton";
 
-function CartList({ showCartMenu, cartList, setExpandMenu }: { showCartMenu: boolean, cartList: itemsList, setExpandMenu: React.Dispatch<React.SetStateAction<boolean>> }) {
+interface CartListProps {
+  showCartMenu: boolean;
+  cartList: itemsList;
+}
+
+function CartList({ showCartMenu, cartList }: CartListProps) {
+  const { setExpandMenu } = useNavBar();
   const [username, fetchUsername] = useUsername();
-  const handleLogout = async () => {
-    setExpandMenu(false);
-    const result = await logout();
-    if (result === "success") {
-      redirect("/shop/signIn");
-    }
-  };
+
   React.useEffect(() => {
     fetchUsername();
   }, [showCartMenu]);
@@ -66,7 +66,7 @@ function CartList({ showCartMenu, cartList, setExpandMenu }: { showCartMenu: boo
                   pointerEvents: showCartMenu ? 'auto' : 'none'
                 }}>
               <svg height="25" viewBox="0 0 13 25" width="13" xmlns="http://www.w3.org/2000/svg"><path d="m12.3577 13.4238-4.4444 4.4444a.6.6 0 0 1 -.8486-.8477l3.37-3.37h-9.3231a.65.65 0 0 1 0-1.3008h9.3232l-3.37-3.37a.6.6 0 0 1 .8486-.8477l4.4444 4.4444a.5989.5989 0 0 1 -.0001.8474z"></path></svg>
-              <button className="cursor-pointer" onClick={()=>handleLogout()}>Sign out {username}</button>
+              <SignOutButton className="cursor-pointer" message={`Sign out ${username}`} />
             </li>
           )}
         </ul>
@@ -75,4 +75,4 @@ function CartList({ showCartMenu, cartList, setExpandMenu }: { showCartMenu: boo
   );
 }
 
-export default React.memo(CartList);
+export default CartList;

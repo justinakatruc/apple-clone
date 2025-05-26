@@ -23,8 +23,8 @@ function SignInForm() {
         <div className="relative w-full">
           <div>
             <input
-              placeholder="admin"
-              className="w-full py-3 pl-4 pr-50 rounded-xl border border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"
+              placeholder="Email"
+              className="w-full py-3 pl-4 pr-50 rounded-t-xl border border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"
               name="emailOrPhone"
               type="text"
             />
@@ -37,8 +37,8 @@ function SignInForm() {
           </div>
           <div /*className={`${passwordBox ? "block" : "hidden"}`}*/>
             <input
-              placeholder="123"
-              className={"w-full py-3 pl-4 pr-50 rounded-xl border border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"}
+              placeholder="Password"
+              className={"w-full py-3 pl-4 pr-50 rounded-b-xl border-b border-l border-r border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"}
               name="password"
               type="password"
             />
@@ -71,7 +71,7 @@ function SignInForm() {
         {/* Forgot Password */}
         <div className="flex flex-col items-center gap-2 text-sm">
           <Link href="#" className="text-blue-500">Forgot password?</Link>
-          <span>Don't have an Apple Account? <Link href="#" className="text-blue-500">Create Your Apple Account</Link></span>
+          <span>Don't have an Apple Account? <Link href="/shop/signUp" className="text-blue-500">Create Your Apple Account</Link></span>
         </div>
       </div>
     </form>

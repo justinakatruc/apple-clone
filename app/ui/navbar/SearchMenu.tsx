@@ -2,9 +2,15 @@ import React from "react";
 import Link from "next/link";
 import NavSearch from "./NavSearch";
 import type { itemsList } from "@/app/data/itemsLists";
+import { useNavBar } from "@/app/context/NavBarContext";
 
-function SearchList({ showSearchMenu, searchList, setExpandMenu }: { showSearchMenu: boolean, searchList: itemsList, setExpandMenu: React.Dispatch<React.SetStateAction<boolean>> }) {
+interface SearchListProps {
+  showSearchMenu: boolean;
+  searchList: itemsList;
+}
 
+function SearchList({ showSearchMenu, searchList }: SearchListProps) {
+  const { setExpandMenu } = useNavBar();
   return (
     <div className="flex flex-col gap-12 select-none"
          style={{
@@ -38,4 +44,4 @@ function SearchList({ showSearchMenu, searchList, setExpandMenu }: { showSearchM
   );
 }
 
-export default React.memo(SearchList);
+export default SearchList;

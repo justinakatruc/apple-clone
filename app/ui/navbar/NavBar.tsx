@@ -190,14 +190,14 @@ function NavBar({ expandMenu, onMouseEnter, setExpandMenu, isDesktop }: NavBarPr
             {activeButton === "Search" && (
               <li className="w-full flex justify-start items-center"
                   style={{opacity: showDesktopItems ? 1 : 0, transform: `translateY(${showDesktopItems ? '3px' : '0px'})`, transition: `opacity 200ms ease-in-out, transform 300ms ease-out`}}>
-                <SearchMenu showSearchMenu={showSearchMenu} searchList={itemsLists.find((list) => list.name === 'Search')!} setExpandMenu={setExpandMenu} />
+                <SearchMenu showSearchMenu={showSearchMenu} searchList={itemsLists.find((list) => list.name === 'Search')!} />
               </li>
             )}
             {/* Cart Menu */}
             {activeButton === "Cart" && (
               <li className="w-full flex justify-start items-center"
                   style={{opacity: showDesktopItems ? 1 : 0, transform: `translateY(${showDesktopItems ? '3px' : '0px'})`, transition: `opacity 200ms ease-in-out, transform 300ms ease-out`}}>
-                <CartMenu showCartMenu={showCartMenu} cartList={itemsLists.find((list) => list.name === 'Cart')!} setExpandMenu={setExpandMenu} />
+                <CartMenu showCartMenu={showCartMenu} cartList={itemsLists.find((list) => list.name === 'Cart')!} />
               </li>
             )}
 
@@ -262,10 +262,10 @@ function NavBar({ expandMenu, onMouseEnter, setExpandMenu, isDesktop }: NavBarPr
 
           {/* Search Items */}
           <div className={`absolute left-10 z-${showSearchMenu ? 20 : 0}`}>
-            <SearchMenu showSearchMenu={showSearchMenu} searchList={itemsLists.find((list) => list.name === 'Search')!} setExpandMenu={setExpandMenu} />
+            <SearchMenu showSearchMenu={showSearchMenu} searchList={itemsLists.find((list) => list.name === 'Search')!} />
           </div>
           <div className={`absolute left-10 z-${showCartMenu ? 20 : 0}`}>
-            <CartMenu showCartMenu={showCartMenu} cartList={itemsLists.find((list) => list.name === 'Cart')!} setExpandMenu={setExpandMenu} />
+            <CartMenu showCartMenu={showCartMenu} cartList={itemsLists.find((list) => list.name === 'Cart')!} />
           </div>
         </div>
       </div>

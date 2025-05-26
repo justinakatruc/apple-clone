@@ -1,5 +1,6 @@
-import SignInFooter from "@/app/ui/footer/SignInFooter";
 import SignInForm from "@/app/ui/signin/SignInForm";
+import Divider from "@/app/ui/Divider";
+import Footer from "@/app/ui/footer/Footer";
 
 export default function SignInPage() {
   return (
@@ -14,16 +15,12 @@ export default function SignInPage() {
           </div>
           {/* Footer */}
           <div className="w-full flex flex-col items-center justify-center mt-10">
-            <div className="border border-gray-300 w-full"></div>
+            <Divider />
             <div className="container py-4 px-4">
-              <span>Need some help? Chat now or call 1‑800‑MY‑APPLE.</span>
+              <span>Need some help? Chat now or call 1-800-MY-APPLE.</span>
             </div>
           </div>
-          <div className="w-full bg-(--softBackground) flex items-center justify-center">
-            <div className="container px-4">
-              <SignInFooter />
-            </div>
-          </div>
+          <Footer type="signIn" />
         </div>
       </div>
   );

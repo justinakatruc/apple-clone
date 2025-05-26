@@ -22,9 +22,7 @@ declare module "next-auth" {
 
 const login = async (credentials: { emailOrPhone: string; password: string }) => {
   await connectToDatabase();
-  const user = await User.findOne({
-    $or: [{ email: credentials.emailOrPhone }, { username: credentials.emailOrPhone }],
-  }).select("+password");
+  const user = await User.findOne({ email: credentials.emailOrPhone }).select("+password");
   if (!user) {
     throw new Error("User not found");
   }
@@ -71,7 +69,8 @@ export const { signIn, signOut, auth } = NextAuth({
             : user;
 
         token.email = plainUser.email;
-        token.name = plainUser.username ?? "";
+        token.name = plainUser.firstName ?? "";
+        console.log("JWT Token:", token);
       }
       return token;
     },

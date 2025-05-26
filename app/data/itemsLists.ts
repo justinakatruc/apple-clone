@@ -242,7 +242,7 @@ export const itemsLists : itemsList[] = [
       {
         category: "My Profile",
         subItems: ["Orders", "Your Saves", "Account", "Sign in"],
-        subItemsLinks: ["shop/order/list", "shop/yoursaves", "/shop/account/home", "shop/signIn"],
+        subItemsLinks: ["shop/order/list", "shop/yoursaves", "shop/account/home", "shop/signIn"],
       }
     ]
   }

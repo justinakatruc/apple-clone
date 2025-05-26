@@ -2,10 +2,10 @@
 import React from "react";
 import IphoneHero from "@/app/ui/cards/IphoneHero";
 import MacBookAirHero from "@/app/ui/cards/MacBookAirHero";
-import HomeFooter from "@/app/ui/footer/HomeFooter";
 import WelcomeCard from "@/app/ui/cards/WelcomCard";
 import MediumCards from "@/app/ui/cards/MediumCards";
 import { useNavBar } from "@/app/context/NavBarContext";
+import Footer from "./ui/footer/Footer";
 
 export default function Home() {
   // Welcome page
@@ -48,11 +48,7 @@ export default function Home() {
             <MediumCards products={["wwdc", "watch", "ipad-air", "card"]}/>
           </div>
           {/* Footer */}
-          <div className="w-full bg-(--softBackground) flex items-center justify-center mt-10">
-            <div className="container">
-              <HomeFooter />
-            </div>
-          </div>
+          <Footer type="home" />
         </div>
       </div>
       }

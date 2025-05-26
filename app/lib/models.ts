@@ -2,13 +2,6 @@ import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
   {
-    username: {
-      type: String,
-      required: true,
-      unique: true,
-      min: 3,
-      max: 20,
-    },
     email: {
       type: String,
       required: true,
@@ -18,19 +11,21 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    img: {
+    firstName: {
       type: String,
+      required: true,
     },
-    isAdmin: {
-      type: Boolean,
-      default: false,
-    },
-    isActive: {
-      type: Boolean,
-      default: true,
-    },
-    address: {
+    lastName: {
       type: String,
+      // required: true,
+    },
+    country: {
+      type: String,
+      // required: true,
+    },
+    birthday: {
+      type: Date,
+      // required: true,
     },
   },
   { timestamps: true }
