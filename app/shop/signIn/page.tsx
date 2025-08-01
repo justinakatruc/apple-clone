@@ -2,7 +2,8 @@ import SignInForm from "@/app/ui/signin/SignInForm";
 import Divider from "@/app/ui/Divider";
 import Footer from "@/app/ui/footer/Footer";
 
-export default function SignInPage() {
+export default async function SignInPage() {
+  await new Promise(resolve => setTimeout(resolve, 3000));
   return (
     <div className={`h-full flex flex-col items-center transition-opacity duration-500 mt-10`}>
         <div className={`w-full flex flex-col items-center duration-200`}>

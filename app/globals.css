@@ -9,12 +9,14 @@
   --hero-size: 100%;
 }
 
-/* @media (prefers-color-scheme: dark) {
+@media (color-scheme: dark) {
   :root {
     --background: #0a0a0a;
+    --softBackground: #1c1c1e;
     --foreground: #ededed;
+    --hover-bg-navbar: #1c1c1e;
   }
-} */
+}
 
 @keyframes zoom-in-out {
   50% {
