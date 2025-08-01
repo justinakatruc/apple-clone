@@ -45,7 +45,7 @@ export default function Home() {
           <div className="overflow-hidden w-full flex flex-col items-center gap-3">
             <IphoneHero />
             <MacBookAirHero />
-            <MediumCards products={["wwdc", "watch", "ipad-air", "card"]}/>
+            <MediumCards products={["wwdc", "watch", "ipad-air", "card"]} />
           </div>
           {/* Footer */}
           <Footer type="home" />
