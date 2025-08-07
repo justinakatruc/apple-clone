@@ -25,7 +25,7 @@ function NavButton({ name, onMouseEnter }: NavButtonProps) {
   };
 
   return (
-    <div className="flex flex-col items-center cursor-pointer h-full" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <div className="flex flex-col items-center cursor-pointer h-full text-[var(--foreground)]" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <span className="h-full flex justify-center items-center">
         {name}
       </span>
